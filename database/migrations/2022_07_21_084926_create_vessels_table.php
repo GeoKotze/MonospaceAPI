@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create('vessels', function (Blueprint $table) {
+            $table->id(); //bigInc by deafault
+            $table->string('name', 100); // i have no idea how ships are named, better be safe
+            $table->string('IMO', 50); //it can't have more than 50 digits.
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('vessels');
     }
 };

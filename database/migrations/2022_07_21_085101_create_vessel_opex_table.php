@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('vessel_opex', function (Blueprint $table) {
+            $table->id();
+            $table->integer('vessel_id');
+            $table->date('date');
+            $table->decimal('expenses', 8, 2); //this is daily expenses, 6(integer) digits are too many already
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('vessel_opex');
     }
 };
